@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>GPSTrackit - List of Faulty Devices</title>
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/faulty_devices.css') }}">
+        <script src="{{ url_for('static', filename='js/faulty_devices.js') }}"></script>
+    </head>
+    <body>
+        <h2>List of Faulty Devices</h2>
+        <footer>
+            <form action="{{ url_for('home') }}" method="get">
+                <input type="submit" id = "home" value="Home">
+            </form>
+        </footer>
+
+        <div class="wrap">
+            <table id="faulty-table" class="center">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Odometer faulty - Device Id</th>
+                    </tr>
+                </thead>
+                <tbody id="faulty-table-body">
+                </tbody>
+                <script>
+                    loadButtonedTable("faulty-table-body", {{list_of_faulty}}, {{list_classified}}, '/device-id-history')
+                </script>
+            </table>
+
+            <table id="server-time-table" class="center">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Late server time - Device Id</th>
+                    </tr>
+                </thead>
+                <tbody id="server-time-table-body">
+                </tbody>
+                <script>
+                    loadButtonedTable("server-time-table-body", {{list_server_time}}, {{list_classified}}, '/server-unit-times')
+                </script>
+            </table>
+
+            <table id="classified-table" class="center">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Classified today - Device Id</th>
+                    </tr>
+                </thead>
+                <tbody id="classified-table-body">
+			<form action="{{ url_for('download_external_classifications_file') }}" method="POST">	
+   				<button type="submit" id='download' >Download</button>
+	    		</form>
+                </tbody>
+                <script>
+                    loadButtonedTable("classified-table-body", {{list_classified}}, [], '/device-id-history')
+                </script>
+		
+            </table>
+        </div>
+    </body>
+
+    <footer>
+        <div id = "logo">
+            <img id = "gpstrackit-logo" src="{{url_for('static', filename='images/gpsTrackitLogo.png')}}">
+        </div>
+    </footer>
+</html>
