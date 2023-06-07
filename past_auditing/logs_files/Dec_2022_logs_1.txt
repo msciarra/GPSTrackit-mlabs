@@ -1,0 +1,304 @@
+WARNING:root:The number of intervals was: 4
+WARNING:root:The following time interval was audited: 2022-12-05 23:00:00 to 2022-12-06 00:00:00
+WARNING:root:It took 24.135708332061768 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 3
+WARNING:root:The following time interval was audited: 2022-12-05 22:00:00 to 2022-12-05 23:00:00
+WARNING:root:It took 38.01026916503906 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 3
+WARNING:root:The following time interval was audited: 2022-12-05 21:00:00 to 2022-12-05 22:00:00
+WARNING:root:It took 35.09538269042969 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 22
+WARNING:root:The following time interval was audited: 2022-12-05 20:00:00 to 2022-12-05 21:00:00
+WARNING:root:It took 65.73055505752563 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 9
+WARNING:root:The following time interval was audited: 2022-12-05 19:00:00 to 2022-12-05 20:00:00
+WARNING:root:It took 38.46178483963013 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 12
+WARNING:root:The following time interval was audited: 2022-12-05 18:00:00 to 2022-12-05 19:00:00
+WARNING:root:It took 49.13295555114746 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 11
+WARNING:root:The following time interval was audited: 2022-12-05 17:00:00 to 2022-12-05 18:00:00
+WARNING:root:It took 40.26258111000061 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 8
+WARNING:root:The following time interval was audited: 2022-12-05 16:00:00 to 2022-12-05 17:00:00
+WARNING:root:It took 41.58067345619202 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 10
+WARNING:root:The following time interval was audited: 2022-12-05 15:00:00 to 2022-12-05 16:00:00
+WARNING:root:It took 33.82467579841614 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 4
+WARNING:root:The following time interval was audited: 2022-12-05 14:00:00 to 2022-12-05 15:00:00
+WARNING:root:It took 39.886289834976196 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 6
+WARNING:root:The following time interval was audited: 2022-12-05 13:00:00 to 2022-12-05 14:00:00
+WARNING:root:It took 37.96481657028198 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 3
+WARNING:root:The following time interval was audited: 2022-12-05 12:00:00 to 2022-12-05 13:00:00
+WARNING:root:It took 10.475133657455444 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 3
+WARNING:root:The following time interval was audited: 2022-12-05 11:00:00 to 2022-12-05 12:00:00
+WARNING:root:It took 7.483008623123169 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 2
+WARNING:root:The following time interval was audited: 2022-12-05 10:00:00 to 2022-12-05 11:00:00
+WARNING:root:It took 7.153786659240723 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 1
+WARNING:root:The following time interval was audited: 2022-12-05 09:00:00 to 2022-12-05 10:00:00
+WARNING:root:It took 2.9806675910949707 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 0
+WARNING:root:The following time interval was audited: 2022-12-05 08:00:00 to 2022-12-05 09:00:00
+WARNING:root:It took 2.1533191204071045 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 2
+WARNING:root:The following time interval was audited: 2022-12-05 07:00:00 to 2022-12-05 08:00:00
+WARNING:root:It took 2.547569513320923 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 4
+WARNING:root:The following time interval was audited: 2022-12-05 06:00:00 to 2022-12-05 07:00:00
+WARNING:root:It took 2.4847252368927 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 0
+WARNING:root:The following time interval was audited: 2022-12-05 05:00:00 to 2022-12-05 06:00:00
+WARNING:root:It took 3.6914656162261963 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 3
+WARNING:root:The following time interval was audited: 2022-12-05 04:00:00 to 2022-12-05 05:00:00
+WARNING:root:It took 3.8214125633239746 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 1
+WARNING:root:The following time interval was audited: 2022-12-05 03:00:00 to 2022-12-05 04:00:00
+WARNING:root:It took 5.924500942230225 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 3
+WARNING:root:The following time interval was audited: 2022-12-05 02:00:00 to 2022-12-05 03:00:00
+WARNING:root:It took 6.338942766189575 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 11
+WARNING:root:The following time interval was audited: 2022-12-05 01:00:00 to 2022-12-05 02:00:00
+WARNING:root:It took 8.335029602050781 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 3
+WARNING:root:The following time interval was audited: 2022-12-05 00:00:00 to 2022-12-05 01:00:00
+WARNING:root:It took 7.383928537368774 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 3
+WARNING:root:The following time interval was audited: 2022-12-04 23:00:00 to 2022-12-05 00:00:00
+WARNING:root:It took 4.8546366691589355 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 3
+WARNING:root:The following time interval was audited: 2022-12-04 22:00:00 to 2022-12-04 23:00:00
+WARNING:root:It took 10.105543375015259 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 7
+WARNING:root:The following time interval was audited: 2022-12-04 21:00:00 to 2022-12-04 22:00:00
+WARNING:root:It took 7.706261396408081 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 8
+WARNING:root:The following time interval was audited: 2022-12-04 20:00:00 to 2022-12-04 21:00:00
+WARNING:root:It took 4.930133581161499 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 3
+WARNING:root:The following time interval was audited: 2022-12-04 19:00:00 to 2022-12-04 20:00:00
+WARNING:root:It took 7.603204727172852 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 6
+WARNING:root:The following time interval was audited: 2022-12-04 18:00:00 to 2022-12-04 19:00:00
+WARNING:root:It took 7.742163181304932 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 3
+WARNING:root:The following time interval was audited: 2022-12-04 17:00:00 to 2022-12-04 18:00:00
+WARNING:root:It took 9.186290264129639 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 5
+WARNING:root:The following time interval was audited: 2022-12-04 16:00:00 to 2022-12-04 17:00:00
+WARNING:root:It took 5.899609804153442 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 10
+WARNING:root:The following time interval was audited: 2022-12-04 15:00:00 to 2022-12-04 16:00:00
+WARNING:root:It took 8.993276119232178 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 5
+WARNING:root:The following time interval was audited: 2022-12-04 14:00:00 to 2022-12-04 15:00:00
+WARNING:root:It took 5.928927183151245 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 2
+WARNING:root:The following time interval was audited: 2022-12-04 13:00:00 to 2022-12-04 14:00:00
+WARNING:root:It took 4.4488136768341064 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 3
+WARNING:root:The following time interval was audited: 2022-12-04 12:00:00 to 2022-12-04 13:00:00
+WARNING:root:It took 3.4391438961029053 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 0
+WARNING:root:The following time interval was audited: 2022-12-04 11:00:00 to 2022-12-04 12:00:00
+WARNING:root:It took 3.0696446895599365 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 2
+WARNING:root:The following time interval was audited: 2022-12-04 10:00:00 to 2022-12-04 11:00:00
+WARNING:root:It took 3.1414172649383545 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 0
+WARNING:root:The following time interval was audited: 2022-12-04 09:00:00 to 2022-12-04 10:00:00
+WARNING:root:It took 1.7929329872131348 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 0
+WARNING:root:The following time interval was audited: 2022-12-04 08:00:00 to 2022-12-04 09:00:00
+WARNING:root:It took 2.6454641819000244 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 1
+WARNING:root:The following time interval was audited: 2022-12-04 07:00:00 to 2022-12-04 08:00:00
+WARNING:root:It took 2.269529104232788 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 1
+WARNING:root:The following time interval was audited: 2022-12-04 06:00:00 to 2022-12-04 07:00:00
+WARNING:root:It took 2.669478178024292 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 2
+WARNING:root:The following time interval was audited: 2022-12-04 05:00:00 to 2022-12-04 06:00:00
+WARNING:root:It took 4.4027769565582275 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 2
+WARNING:root:The following time interval was audited: 2022-12-04 04:00:00 to 2022-12-04 05:00:00
+WARNING:root:It took 6.022555828094482 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 1
+WARNING:root:The following time interval was audited: 2022-12-04 03:00:00 to 2022-12-04 04:00:00
+WARNING:root:It took 4.727799654006958 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 3
+WARNING:root:The following time interval was audited: 2022-12-04 02:00:00 to 2022-12-04 03:00:00
+WARNING:root:It took 6.298848390579224 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 3
+WARNING:root:The following time interval was audited: 2022-12-04 01:00:00 to 2022-12-04 02:00:00
+WARNING:root:It took 7.101151943206787 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 3
+WARNING:root:The following time interval was audited: 2022-12-04 00:00:00 to 2022-12-04 01:00:00
+WARNING:root:It took 9.65949273109436 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 3
+WARNING:root:The following time interval was audited: 2022-12-03 23:00:00 to 2022-12-04 00:00:00
+WARNING:root:It took 10.187324523925781 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 4
+WARNING:root:The following time interval was audited: 2022-12-03 22:00:00 to 2022-12-03 23:00:00
+WARNING:root:It took 13.797861814498901 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 2
+WARNING:root:The following time interval was audited: 2022-12-03 21:00:00 to 2022-12-03 22:00:00
+WARNING:root:It took 14.86142349243164 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 7
+WARNING:root:The following time interval was audited: 2022-12-03 20:00:00 to 2022-12-03 21:00:00
+WARNING:root:It took 7.0406174659729 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 7
+WARNING:root:The following time interval was audited: 2022-12-03 19:00:00 to 2022-12-03 20:00:00
+WARNING:root:It took 16.359192848205566 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 10
+WARNING:root:The following time interval was audited: 2022-12-03 18:00:00 to 2022-12-03 19:00:00
+WARNING:root:It took 18.435842990875244 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 10
+WARNING:root:The following time interval was audited: 2022-12-03 17:00:00 to 2022-12-03 18:00:00
+WARNING:root:It took 20.76659321784973 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 6
+WARNING:root:The following time interval was audited: 2022-12-03 16:00:00 to 2022-12-03 17:00:00
+WARNING:root:It took 6.024067163467407 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 6
+WARNING:root:The following time interval was audited: 2022-12-03 15:00:00 to 2022-12-03 16:00:00
+WARNING:root:It took 15.050341129302979 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 7
+WARNING:root:The following time interval was audited: 2022-12-03 14:00:00 to 2022-12-03 15:00:00
+WARNING:root:It took 17.881289958953857 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 5
+WARNING:root:The following time interval was audited: 2022-12-03 13:00:00 to 2022-12-03 14:00:00
+WARNING:root:It took 12.389522790908813 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 4
+WARNING:root:The following time interval was audited: 2022-12-03 12:00:00 to 2022-12-03 13:00:00
+WARNING:root:It took 13.769076108932495 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 1
+WARNING:root:The following time interval was audited: 2022-12-03 11:00:00 to 2022-12-03 12:00:00
+WARNING:root:It took 8.759574174880981 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 0
+WARNING:root:The following time interval was audited: 2022-12-03 10:00:00 to 2022-12-03 11:00:00
+WARNING:root:It took 5.70709753036499 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 0
+WARNING:root:The following time interval was audited: 2022-12-03 09:00:00 to 2022-12-03 10:00:00
+WARNING:root:It took 4.506604909896851 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 1
+WARNING:root:The following time interval was audited: 2022-12-03 08:00:00 to 2022-12-03 09:00:00
+WARNING:root:It took 4.507008790969849 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 2
+WARNING:root:The following time interval was audited: 2022-12-03 07:00:00 to 2022-12-03 08:00:00
+WARNING:root:It took 5.287488698959351 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 3
+WARNING:root:The following time interval was audited: 2022-12-03 06:00:00 to 2022-12-03 07:00:00
+WARNING:root:It took 5.815307855606079 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 1
+WARNING:root:The following time interval was audited: 2022-12-03 05:00:00 to 2022-12-03 06:00:00
+WARNING:root:It took 3.795370578765869 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 3
+WARNING:root:The following time interval was audited: 2022-12-03 04:00:00 to 2022-12-03 05:00:00
+WARNING:root:It took 7.075213193893433 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 3
+WARNING:root:The following time interval was audited: 2022-12-03 03:00:00 to 2022-12-03 04:00:00
+WARNING:root:It took 5.857019901275635 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 3
+WARNING:root:The following time interval was audited: 2022-12-03 02:00:00 to 2022-12-03 03:00:00
+WARNING:root:It took 10.81547236442566 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 3
+WARNING:root:The following time interval was audited: 2022-12-03 01:00:00 to 2022-12-03 02:00:00
+WARNING:root:It took 15.309963941574097 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 3
+WARNING:root:The following time interval was audited: 2022-12-03 00:00:00 to 2022-12-03 01:00:00
+WARNING:root:It took 23.083526611328125 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 7
+WARNING:root:The following time interval was audited: 2022-12-02 23:00:00 to 2022-12-03 00:00:00
+WARNING:root:It took 29.681819677352905 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 26
+WARNING:root:The following time interval was audited: 2022-12-02 22:00:00 to 2022-12-02 23:00:00
+WARNING:root:It took 48.42718291282654 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 20
+WARNING:root:The following time interval was audited: 2022-12-02 21:00:00 to 2022-12-02 22:00:00
+WARNING:root:It took 21.105395317077637 seconds to finish
+WARNING:root:    
+WARNING:root:The number of intervals was: 56
+WARNING:root:The following time interval was audited: 2022-12-02 20:00:00 to 2022-12-02 21:00:00
+WARNING:root:It took 35.792088747024536 seconds to finish
+WARNING:root:    

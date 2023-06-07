@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>GPSTrackit - Faulty Devices</title>
+        <link rel = "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/index.css') }}">
+       <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+    </head>
+    <body>
+        <h1> Faulty device detector </h1>
+        <div id="forms">
+            <form action="{{ url_for('see_device_id_history_and_classification') }}" method="post" id="device-id-form">
+                <input id = "deviceId" type="text" name="deviceId" placeholder="Insert Device ID here">
+                <input id = "submit-device-id" type="submit" value="See history">
+            </form>
+            <form action="{{ url_for('see_unit_id_history_and_classification') }}" method="post" id="unit-id-form">
+                <input id = "unitId" type="text" name="unitId" placeholder="Insert Unit ID here">
+                <input id = "submit-unit-id" type="submit" value="See history">
+            </form>
+        </div>
+        <div>
+            <form action="{{ url_for('list_of_faulty') }}" method="get">
+                <input type="submit" id = "see-faulty-list" value="See all faulty devices">
+            </form>
+        </div>
+
+	<br>
+	
+        {% if device_id %}
+      	<form action="/device-id-history" method="POST">
+  	    <label for="date">Select a date:</label>
+  	    <input type="date" id="date" name="date">
+	    <input type="hidden" name="deviceId" value="{{ device_id }}">
+  	    <button type="submit">Search</button>
+	</form>
+	<script>
+  	    const dateInput = document.getElementById('date');
+	    const downloadDateInput = document.getElementById('download-date');
+  	    dateInput.addEventListener('change', () => {
+    		const date = new Date(dateInput.value);
+    		date.setDate(date.getDate() - 1); // Restar un día
+    		// fecha.setDate(fecha.getDate() + 1); // Sumar un día
+    		const dateStr = date.toISOString().substr(0, 10);
+		downloadDateInput.value = "{{ selected_date }}" || null;	
+    		fetch(`/date?date=${dateStr}`);
+  	    });
+	</script>
+        <p id="device-title">Device Id: {{device_id}}  -   Unit Id: {{unit_id}}</p>
+	<div id="download-csv">
+	    <script>
+                setVisibility("download-csv", '{{download_visibility}}')
+            </script>
+ 	    <form action="{{ url_for('download_file') }}" method="POST">
+		<input type="hidden" name="date" value="{{ selected_date }}" id="download-date">	
+   		<button type="submit">Download</button>
+	    </form>
+        {% endif %}
+        <div id="error-invalid-id">
+            <script>
+                setVisibility("error-invalid-id", '{{invalid_id_error_visibility}}')
+            </script>
+            <p>The ID indicated is not valid, please try again.</p>
+        </div>
+        <div id="error-not-existing-device">
+            <script>
+                setVisibility("error-not-existing-device", '{{not_existing_device_error_visibility}}')
+            </script>
+            <p>The ID indicated does not exist or did not report measures lately.</p>
+        </div>
+        <div id="device-history-classification">
+            <script>
+                setVisibility('device-history-classification','{{scatter_visibility}}');
+            </script>
+            <img src="{{url_for('static', filename=graph_name)}}" onerror="this.style.display='none'">
+            <p id="stat-high-class">Statistical High Model Classification: {{stat_high_classification}}</p>
+            <p id="stat-low-class">Statistical Low Model Classification: {{stat_low_classification}}</p>
+            <p id="anomaly-class">Anomaly Model Classification: {{anomaly_classification}}</p>
+            <p id="late-server-time-class">Late Server Time (3 days): {{late_server_time}}</p>
+            <p id="faulty-class">Device Status: {{overall_classification}}</p>
+
+            <form  id = "faulty-form" action="{{ url_for('classify_device') }}" method="post">
+                <input id="comment-faulty" placeholder=" Enter a comment for this device's classification." name="comment-faulty">
+                <input type="submit" id = "faulty" value="Classify as faulty" name="faulty">
+                <input type="submit" id = "not-faulty" value="Classify as not faulty" name="not-faulty">
+            </form>
+        </div>
+        <div id="server-time-status">
+            <script>
+                setVisibility("server-time-status", '{{unit_server_times_visibility}}')
+            </script>
+            <table id="server-unit-times-table" class="center">
+                 <thead>
+                    <tr>
+                        <th>Unit time</th>
+                        <th>Server time</th>
+                    </tr>
+                </thead>
+                <tbody id="server-unit-times-table-body">
+                </tbody>
+                {% if list_unit_server_times %}
+                <script>
+                    loadServerUnitTimesTable("server-unit-times-table-body", {{ list_unit_server_times | tojson }});
+                </script>
+                {% endif %}
+            </table>
+        </div>
+    </body>
+    <footer>
+        <div id = "logo">
+            <img id = "gpstrackit-logo" src="{{url_for('static', filename='images/gpsTrackitLogo.png')}}">
+        </div>
+    </footer>
+</html>
