@@ -1,0 +1,407 @@
+{
+    "Parameters":{
+      "VpcId": {
+        "Type": "String"
+      },
+      "SubnetId": {
+        "Type": "String"
+      },
+      "ImageServiceUri": {
+        "Type": "String"
+      },
+      "BucketName": {
+        "Type": "String"
+      },
+      "ImageEtlUri": {
+        "Type": "String"
+      },
+      "GpsDbHost": {
+        "Type": "String"
+      },
+      "GpsDbUser": {
+        "Type": "String"
+      },
+      "GpsDbName": {
+        "Type": "String"
+      },
+      "Region": {
+        "Type": "String"
+      },
+      "GpsDbPort": {
+        "Type": "String"
+      },
+      "OnlyMetamodel": {
+        "Type": "String"
+      },
+      "Namespace": {
+        "Type": "String"
+      }
+    },
+	"Resources": {
+      "ServicesCluster": {
+        "Type":  "AWS::ECS::Cluster",
+        "Properties": {
+          "ClusterName": "faulty-detector-services-cluster"
+        }
+      },
+      "ServicesService": {
+        "Type" : "AWS::ECS::Service",
+        "Properties" : {
+          "Cluster": {
+            "Ref": "ServicesCluster"
+          },
+          "TaskDefinition": {
+            "Ref": "TaskDefinitionService"
+          },
+          "ServiceName" : "faulty-detector-services-service",
+          "LaunchType" : "FARGATE",
+          "NetworkConfiguration": {
+            "AwsvpcConfiguration": {
+              "AssignPublicIp": "ENABLED",
+              "Subnets": [{
+                "Ref": "SubnetId"
+              }],
+              "SecurityGroups": [
+                {
+                  "Fn::GetAtt": [
+                    "ContainerSecurityGroupService",
+                    "GroupId"
+                  ]
+                }]
+            }
+          }
+        }
+      },
+      "ExecutionRoleService":{
+        "Type": "AWS::IAM::Role",
+        "Properties": {
+          "RoleName": "faulty-detector-services-role",
+          "AssumeRolePolicyDocument": {
+            "Statement": {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "ecs-tasks.amazonaws.com"
+              },
+              "Action": "sts:AssumeRole"
+            }
+          },
+          "ManagedPolicyArns": ["arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy",
+                                "arn:aws:iam::aws:policy/AmazonS3FullAccess",
+                                "arn:aws:iam::aws:policy/CloudWatchFullAccess"]
+        }
+      },
+      "ContainerSecurityGroupService": {
+        "Type": "AWS::EC2::SecurityGroup",
+        "Properties": {
+          "GroupName": "ContainerSecurityGroup-deviceDetector",
+          "GroupDescription": "Security group for faulty-detector-service container",
+          "SecurityGroupIngress": {
+            "IpProtocol": "tcp",
+            "FromPort": 5000,
+            "ToPort": 5000,
+            "CidrIp": "0.0.0.0/0"
+          },
+          "VpcId": {
+            "Ref": "VpcId"
+          }
+        }
+      },
+      "TaskDefinitionService": {
+        "Type": "AWS::ECS::TaskDefinition",
+        "Properties": {
+          "Family": "faulty-detector-services-task",
+          "Cpu": 1024,
+          "Memory": 2048,
+          "NetworkMode": "awsvpc",
+          "TaskRoleArn":{
+            "Ref": "ExecutionRoleService"
+          } ,
+          "ExecutionRoleArn": {
+            "Ref": "ExecutionRoleService"
+          },
+          "ContainerDefinitions": [
+            {
+              "Name": "faulty-detector-services",
+              "Memory": 2048,
+              "Image": {
+                "Ref" : "ImageServiceUri"
+              },
+              "LogConfiguration": {
+                "LogDriver": "awslogs",
+                "Options": {
+                  "awslogs-group": "services-container",
+                  "awslogs-region": {
+                    "Ref": "Region"
+                  },
+                  "awslogs-create-group": "true",
+                  "awslogs-stream-prefix": "services"
+                }
+              },
+              "PortMappings": [{
+                "ContainerPort": 5000,
+                "HostPort": 5000,
+                "Protocol": "tcp"
+              }],
+              "Environment": [
+                {
+                  "Name": "BUCKET_NAME",
+                  "Value": {
+                    "Ref": "BucketName"
+                  }
+                },
+              {
+                  "Name": "NAMESPACE",
+                  "Value": {
+                    "Ref": "Namespace"
+                  }
+                },
+                {
+                  "Name": "REGION",
+                  "Value": {
+                    "Ref": "Region"
+                  }
+                }]
+            }
+          ],
+          "RequiresCompatibilities": [
+            "FARGATE"
+          ]
+        }
+      },
+      "EtlCluster": {
+        "Type":  "AWS::ECS::Cluster",
+        "Properties": {
+          "ClusterName": "faulty-detector-etl-cluster"
+        }
+      },
+      "ExecutionRoleEtl":{
+        "Type": "AWS::IAM::Role",
+        "Properties": {
+          "RoleName": "faulty-detector-etl-role",
+          "AssumeRolePolicyDocument": {
+            "Statement": {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": [
+                  "events.amazonaws.com",
+                  "ecs-tasks.amazonaws.com"
+                ]
+              },
+              "Action": "sts:AssumeRole"
+            }
+          },
+          "ManagedPolicyArns": ["arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy",
+                                "arn:aws:iam::aws:policy/AmazonS3FullAccess",
+                                "arn:aws:iam::aws:policy/CloudWatchFullAccess",
+                                "arn:aws:iam::aws:policy/AmazonRDSFullAccess"],
+          "Path": "/",
+          "Policies": [
+            {
+              "PolicyDocument": {
+                "Statement": [
+                  {
+                    "Action": [
+                      "ecs:RunTask",
+                      "iam:ListInstanceProfiles",
+                      "iam:ListRoles",
+                      "iam:PassRole"
+                    ],
+                    "Condition": {
+                      "ArnEquals": {
+                        "ecs:cluster": {
+                          "Fn::GetAtt": [
+                            "EtlCluster",
+                            "Arn"
+                          ]
+                        }
+                      }
+                    },
+                    "Effect": "Allow",
+                    "Resource": [
+                      "*"
+                    ]
+                  }
+                ]
+              },
+              "PolicyName": "RunTaskPolicy"
+            },
+            {
+              "PolicyDocument": {
+                "Statement": [
+                  {
+                    "Sid": "VisualEditor0",
+                    "Effect": "Allow",
+                    "Action": "rds-db:connect",
+                    "Resource": "*"
+                  }
+                ]
+              },
+              "PolicyName": "ConnectDBPolicy"
+            }
+          ]
+        }
+      },
+      "ContainerSecurityGroupEtl": {
+        "Type": "AWS::EC2::SecurityGroup",
+        "Properties": {
+          "GroupName": "ContainerSecurityGroup-deviceDetector-etl",
+          "GroupDescription": "Security group for faulty-detector-etl container",
+          "SecurityGroupIngress": {
+            "IpProtocol": "tcp",
+            "FromPort": 5000,
+            "ToPort": 5000,
+            "CidrIp": "0.0.0.0/0"
+          },
+          "VpcId": {
+            "Ref": "VpcId"
+          }
+        }
+      },
+      "TaskDefinitionEtl": {
+        "Type": "AWS::ECS::TaskDefinition",
+        "Properties": {
+          "Family": "faulty-detector-etl-task",
+          "Cpu": 2048,
+          "Memory": 16384,
+          "NetworkMode": "awsvpc",
+          "TaskRoleArn":{
+            "Ref": "ExecutionRoleEtl"
+          } ,
+          "ExecutionRoleArn": {
+            "Ref": "ExecutionRoleEtl"
+          },
+          "ContainerDefinitions": [
+            {
+              "Name": "faulty-detector-etl",
+              "Memory": 16384,
+              "Image": {
+                "Ref" : "ImageEtlUri"
+              },
+              "LogConfiguration": {
+                "LogDriver": "awslogs",
+                "Options": {
+                  "awslogs-group": "etl-container",
+                  "awslogs-region": {
+                    "Ref": "Region"
+                  },
+                  "awslogs-create-group": "true",
+                  "awslogs-stream-prefix": "etl"
+                }
+              },
+              "Environment": [
+              {
+                  "Name": "BUCKET_NAME",
+                  "Value": {
+                    "Ref": "BucketName"
+                  }
+                },
+                {
+                  "Name": "GPS_DB_USER",
+                  "Value": {
+                    "Ref": "GpsDbUser"
+                  }
+                },
+                {
+                  "Name": "GPS_DB_HOST",
+                  "Value": {
+                    "Ref": "GpsDbHost"
+                  }
+                },
+                {
+                  "Name": "GPS_DB_NAME",
+                  "Value": {
+                    "Ref": "GpsDbName"
+                  }
+                },
+                {
+                  "Name": "GPS_DB_PORT",
+                  "Value": {
+                    "Ref": "GpsDbPort"
+                  }
+                },
+                {
+                  "Name": "REGION",
+                  "Value": {
+                    "Ref": "Region"
+                  }
+                },
+                {
+                  "Name": "ONLY_METAMODEL",
+                  "Value": {
+                    "Ref": "OnlyMetamodel"
+                  }
+                },
+                {
+                  "Name": "NAMESPACE",
+                  "Value": {
+                    "Ref": "Namespace"
+                  }
+                }
+              ]
+            }
+          ],
+          "RequiresCompatibilities": [
+            "FARGATE"
+          ]
+        }
+      },
+      "EtlSchedule": {
+        "Type": "AWS::Events::Rule",
+        "Properties": {
+          "Description": "Runs etl every day at 5am",
+          "ScheduleExpression": "cron(0 5 * * ? *)",
+          "State": "ENABLED",
+          "Targets": [
+            {
+              "Id": "TaskDefinitionEtl",
+              "RoleArn": {
+                "Fn::GetAtt": ["ExecutionRoleEtl", "Arn"]
+              },
+              "EcsParameters": {
+                "TaskDefinitionArn": {
+                  "Ref": "TaskDefinitionEtl"
+                },
+                "TaskCount": 1,
+                "LaunchType": "FARGATE",
+                "NetworkConfiguration": {
+                  "AwsVpcConfiguration" : {
+                    "AssignPublicIp": "ENABLED",
+                    "Subnets": [{
+                      "Ref": "SubnetId"
+                    }],
+                    "SecurityGroups": [
+                    {
+                      "Fn::GetAtt": [
+                        "ContainerSecurityGroupEtl",
+                        "GroupId"
+                      ]
+                    }]
+                 }
+                }
+              },
+              "Arn": {
+                "Fn::GetAtt": ["EtlCluster", "Arn"]
+              }
+            }
+          ]
+        }
+      },
+      "MetricsNamespace" : {
+        "Type": "AWS::ServiceDiscovery::HttpNamespace",
+        "Properties": {
+          "Description": "Namespace for cloudwatch metrics",
+          "Name": {
+            "Ref": "Namespace"
+          }
+        }
+      },
+      "CloudWatchDashboard": {
+        "Type": "AWS::CloudWatch::Dashboard",
+        "Properties": {
+          "DashboardName": "faulty-detector-dashboard",
+          "DashboardBody": "{\"start\": \"-PT24H\",\"periodOverride\": \"inherit\", \"widgets\": []}"
+        }
+      }
+	}
+}
+
